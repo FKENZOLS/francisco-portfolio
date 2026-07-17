@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfólio de Francisco, estudante de Ciência da Computação e produtor musical.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://fkenzols.github.io/francisco-portfolio/">
+  <title>Francisco — Ciência da Computação e música</title>
+  <style>
+    :root {
+      --background: #080808;
+      --foreground: #f2efe7;
+      --muted: #a6a29a;
+      --line: #292929;
+      --accent: #ff2aae;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--background);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: "Cascadia Code", "SFMono-Regular", "Liberation Mono", Consolas, monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: .32em;
+      transition: color 160ms ease;
+    }
+
+    a:hover { color: var(--accent); }
+
+    a:focus-visible {
+      border-radius: 2px;
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    .site-shell {
+      width: min(100%, 1680px);
+      min-height: 100vh;
+      margin: 0 auto;
+      border-right: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .site-header {
+      min-height: 72px;
+      padding: 0 clamp(1.25rem, 3vw, 3rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      border-bottom: 1px solid var(--line);
+      font-size: .75rem;
+      letter-spacing: .04em;
+    }
+
+    .wordmark {
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .site-header nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2.5vw, 2.5rem);
+    }
+
+    .hero {
+      min-height: min(730px, calc(100svh - 72px));
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .introduction {
+      min-width: 0;
+      padding: clamp(3rem, 8vw, 8rem) clamp(1.25rem, 4vw, 4.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .role {
+      margin: 0 0 1.75rem;
+      color: var(--accent);
+      font-size: clamp(.68rem, 1vw, .82rem);
+      letter-spacing: .04em;
+    }
+
+    h1, h2, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 2rem;
+      font-size: clamp(2.8rem, 7.4vw, 8rem);
+      font-weight: 500;
+      line-height: .9;
+      letter-spacing: -.08em;
+      white-space: nowrap;
+    }
+
+    .lead {
+      max-width: 38ch;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(.95rem, 1.3vw, 1.18rem);
+      line-height: 1.65;
+    }
+
+    .signal {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      border-left: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 57% 48%, transparent 0 21%, #080808 21.5% 34%, transparent 34.5% 48%, #080808 48.5% 53%, transparent 53.5%),
+        radial-gradient(circle, rgb(255 42 174 / 92%) 0 1.15px, transparent 1.35px);
+      background-color: #0c0710;
+      background-size: auto, 5px 5px;
+    }
+
+    .signal::before {
+      position: absolute;
+      inset: 8% 7%;
+      border: 1px solid rgb(255 42 174 / 28%);
+      border-radius: 50%;
+      content: "";
+      transform: rotate(-13deg) scaleX(.82);
+    }
+
+    .signal::after {
+      position: absolute;
+      width: 42%;
+      aspect-ratio: 1;
+      top: 28%;
+      left: 37%;
+      border: clamp(28px, 4vw, 62px) solid #080808;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px rgb(255 42 174 / 22%);
+      content: "";
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project, .music {
+      min-height: 285px;
+      padding: clamp(2rem, 5vw, 4.5rem);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project { border-right: 1px solid var(--line); }
+
+    h2 {
+      margin-bottom: 1.4rem;
+      font-size: clamp(1.8rem, 3vw, 3.2rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .project p, .music p {
+      max-width: 48ch;
+      margin-bottom: 2rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .primary-link {
+      margin-top: auto;
+      font-size: .82rem;
+    }
+
+    footer {
+      min-height: 104px;
+      padding: 0 clamp(1.25rem, 4vw, 4.5rem);
+      display: flex;
+      align-items: center;
+      font-size: clamp(.78rem, 1.3vw, .95rem);
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .introduction { min-height: 520px; }
+      .signal {
+        min-height: 360px;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .site-shell {
+        border-right: 0;
+        border-left: 0;
+      }
+
+      .site-header {
+        min-height: 92px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: .8rem;
+      }
+
+      .site-header nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: .75rem;
+      }
+
+      .introduction { min-height: 440px; }
+      h1 { letter-spacing: -.085em; }
+      .signal { min-height: 280px; }
+      .work-grid { grid-template-columns: 1fr; }
+
+      .project {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project, .music { min-height: 260px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell" id="top">
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Voltar ao início">Francisco</a>
+      <nav aria-label="Links principais">
+        <a href="https://github.com/FKENZOLS">GitHub</a>
+        <a href="https://instagram.com/kenzo.last">Instagram</a>
+        <a href="mailto:kenzol.sato@gmail.com">Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="introduction">
+          <p class="role">Ciência da Computação · Produção musical</p>
+          <h1 id="page-title">Francisco</h1>
+          <p class="lead">Estudante interessado em filosofia, tecnologia e música.</p>
+        </div>
+        <div class="signal" aria-hidden="true"></div>
+      </section>
+
+      <div class="work-grid">
+        <section class="project" aria-labelledby="project-title">
+          <h2 id="project-title">Reference Desk</h2>
+          <p>Aplicação local e privada para pesquisar PDFs e abrir a fonte exata.</p>
+          <a class="primary-link" href="https://github.com/FKENZOLS/reference-desk">Ver projeto <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <section class="music" aria-labelledby="music-title">
+          <h2 id="music-title">Música</h2>
+          <p>Produção musical.</p>
+          <a class="primary-link" href="https://instagram.com/kenzo.last">@kenzo.last <span aria-hidden="true">↗</span></a>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <a href="mailto:kenzol.sato@gmail.com">kenzol.sato@gmail.com</a>
+    </footer>
+  </div>
+</body>
+</html>
