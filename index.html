@@ -63,11 +63,17 @@
       padding: 0 clamp(1.25rem, 3vw, 3rem);
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
       border-bottom: 1px solid var(--line);
       font-family: var(--mono);
       font-size: .75rem;
       letter-spacing: .04em;
+    }
+
+    .header-email {
+      font-size: clamp(.82rem, 1vw, .94rem);
+      font-weight: 500;
     }
 
     .site-header nav {
@@ -295,15 +301,6 @@
       line-height: 1.5;
     }
 
-    footer {
-      min-height: 104px;
-      padding: 0 clamp(1.25rem, 4vw, 4.5rem);
-      display: flex;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: clamp(.78rem, 1.3vw, .95rem);
-    }
-
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .introduction { min-height: 410px; }
@@ -330,12 +327,17 @@
         border-left: 0;
       }
 
-      .site-header { min-height: 72px; }
+      .site-header {
+        min-height: 108px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: .85rem;
+      }
 
       .site-header nav {
-        width: 100%;
-        justify-content: space-between;
-        gap: .75rem;
+        justify-content: flex-start;
+        gap: 1.5rem;
       }
 
       .hero { min-height: auto; }
@@ -369,10 +371,10 @@
 <body>
   <div class="site-shell" id="top">
     <header class="site-header">
+      <a class="header-email" href="mailto:kenzol.sato@gmail.com">kenzol.sato@gmail.com</a>
       <nav aria-label="Links principais">
         <a href="https://github.com/FKENZOLS">GitHub</a>
         <a href="https://instagram.com/kenzo.last">Instagram</a>
-        <a href="mailto:kenzol.sato@gmail.com">Contato</a>
       </nav>
     </header>
 
@@ -443,9 +445,6 @@
       </section>
     </main>
 
-    <footer>
-      <a href="mailto:kenzol.sato@gmail.com">kenzol.sato@gmail.com</a>
-    </footer>
   </div>
 </body>
 </html>
