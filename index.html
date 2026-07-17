@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfólio de Francisco, estudante de Ciência da Computação e produtor musical.">
+  <meta name="description" content="PortfÃ³lio de Francisco, estudante de CiÃªncia da ComputaÃ§Ã£o e produtor musical.">
   <meta name="theme-color" content="#080808">
   <link rel="canonical" href="https://fkenzols.github.io/francisco-portfolio/">
-  <title>Francisco — Ciência da Computação e música</title>
+  <title>Francisco â€” CiÃªncia da ComputaÃ§Ã£o e mÃºsica</title>
   <style>
     :root {
       --background: #080808;
@@ -61,16 +61,10 @@
       padding: 0 clamp(1.25rem, 3vw, 3rem);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
+      justify-content: flex-end;
       border-bottom: 1px solid var(--line);
       font-size: .75rem;
       letter-spacing: .04em;
-    }
-
-    .wordmark {
-      font-weight: 600;
-      text-decoration: none;
     }
 
     .site-header nav {
@@ -101,7 +95,7 @@
       letter-spacing: .04em;
     }
 
-    h1, h2, p { margin-top: 0; }
+    h1, h2, h3, p { margin-top: 0; }
 
     h1 {
       margin-bottom: 2rem;
@@ -189,6 +183,51 @@
       font-size: .82rem;
     }
 
+    .books {
+      padding: clamp(3rem, 6vw, 6rem) clamp(1.25rem, 4vw, 4.5rem) clamp(3.5rem, 7vw, 7rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .books > h2 { margin-bottom: clamp(2rem, 4vw, 4rem); }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(1.5rem, 3vw, 3.5rem);
+    }
+
+    .book { min-width: 0; }
+
+    .book-cover {
+      aspect-ratio: 2 / 3;
+      margin-bottom: 1.25rem;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #0d0d0d;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .book h3 {
+      margin-bottom: .55rem;
+      font-size: clamp(.82rem, 1vw, .96rem);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .book p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: .74rem;
+      line-height: 1.5;
+    }
+
     footer {
       min-height: 104px;
       padding: 0 clamp(1.25rem, 4vw, 4.5rem);
@@ -205,6 +244,8 @@
         border-top: 1px solid var(--line);
         border-left: 0;
       }
+
+      .books-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 620px) {
@@ -213,13 +254,7 @@
         border-left: 0;
       }
 
-      .site-header {
-        min-height: 92px;
-        align-items: flex-start;
-        flex-direction: column;
-        justify-content: center;
-        gap: .8rem;
-      }
+      .site-header { min-height: 72px; }
 
       .site-header nav {
         width: 100%;
@@ -238,6 +273,8 @@
       }
 
       .project, .music { min-height: 260px; }
+      .books-grid { gap: 2rem 1rem; }
+      .book-cover { margin-bottom: .9rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -249,7 +286,6 @@
 <body>
   <div class="site-shell" id="top">
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Voltar ao início">Francisco</a>
       <nav aria-label="Links principais">
         <a href="https://github.com/FKENZOLS">GitHub</a>
         <a href="https://instagram.com/kenzo.last">Instagram</a>
@@ -260,9 +296,9 @@
     <main>
       <section class="hero" aria-labelledby="page-title">
         <div class="introduction">
-          <p class="role">Ciência da Computação · Produção musical</p>
+          <p class="role">CiÃªncia da ComputaÃ§Ã£o Â· ProduÃ§Ã£o musical</p>
           <h1 id="page-title">Francisco</h1>
-          <p class="lead">Estudante interessado em filosofia, tecnologia e música.</p>
+          <p class="lead">Estudante interessado em filosofia, tecnologia e mÃºsica.</p>
         </div>
         <div class="signal" aria-hidden="true"></div>
       </section>
@@ -270,16 +306,53 @@
       <div class="work-grid">
         <section class="project" aria-labelledby="project-title">
           <h2 id="project-title">Reference Desk</h2>
-          <p>Aplicação local e privada para pesquisar PDFs e abrir a fonte exata.</p>
-          <a class="primary-link" href="https://github.com/FKENZOLS/reference-desk">Ver projeto <span aria-hidden="true">↗</span></a>
+          <p>AplicaÃ§Ã£o local e privada para pesquisar PDFs e abrir a fonte exata.</p>
+          <a class="primary-link" href="https://github.com/FKENZOLS/reference-desk">Ver projeto <span aria-hidden="true">â†—</span></a>
         </section>
 
         <section class="music" aria-labelledby="music-title">
-          <h2 id="music-title">Música</h2>
-          <p>Produção musical.</p>
-          <a class="primary-link" href="https://instagram.com/kenzo.last">@kenzo.last <span aria-hidden="true">↗</span></a>
+          <h2 id="music-title">MÃºsica</h2>
+          <p>ProduÃ§Ã£o musical.</p>
+          <a class="primary-link" href="https://instagram.com/kenzo.last">@kenzo.last <span aria-hidden="true">â†—</span></a>
         </section>
       </div>
+
+      <section class="books" aria-labelledby="books-title">
+        <h2 id="books-title">Livros favoritos</h2>
+        <div class="books-grid">
+          <article class="book">
+            <div class="book-cover">
+              <img src="assets/prometheism.jpg" width="1500" height="1500" loading="lazy" alt="Capa de Prometheism">
+            </div>
+            <h3>Prometheism</h3>
+            <p>Jason Reza Jorjani</p>
+          </article>
+
+          <article class="book">
+            <div class="book-cover">
+              <img src="assets/object-oriented-ontology.jpg" width="920" height="1500" loading="lazy" alt="Capa de Object-Oriented Ontology">
+            </div>
+            <h3>Object-Oriented Ontology</h3>
+            <p>Graham Harman</p>
+          </article>
+
+          <article class="book">
+            <div class="book-cover">
+              <img src="assets/the-listening-society.jpg" width="324" height="500" loading="lazy" alt="Capa de The Listening Society">
+            </div>
+            <h3>The Listening Society</h3>
+            <p>Hanzi Freinacht</p>
+          </article>
+
+          <article class="book">
+            <div class="book-cover">
+              <img src="assets/memory-assemblages.jpg" width="1000" height="1500" loading="lazy" alt="Capa de Memory Assemblages">
+            </div>
+            <h3>Memory Assemblages</h3>
+            <p>Hilan Bensusan</p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -288,3 +361,4 @@
   </div>
 </body>
 </html>
+
