@@ -14,6 +14,8 @@
       --muted: #a6a29a;
       --line: #292929;
       --accent: #ff2aae;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "Cascadia Code", "SFMono-Regular", "Liberation Mono", Consolas, monospace;
     }
 
     * { box-sizing: border-box; }
@@ -29,7 +31,7 @@
       margin: 0;
       background: var(--background);
       color: var(--foreground);
-      font-family: "Cascadia Code", "SFMono-Regular", "Liberation Mono", Consolas, monospace;
+      font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -63,6 +65,7 @@
       align-items: center;
       justify-content: flex-end;
       border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
       font-size: .75rem;
       letter-spacing: .04em;
     }
@@ -74,9 +77,9 @@
     }
 
     .hero {
-      min-height: min(730px, calc(100svh - 72px));
+      min-height: min(660px, calc(100svh - 72px));
       display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr);
+      grid-template-columns: minmax(0, 1.15fr) minmax(380px, .85fr);
       border-bottom: 1px solid var(--line);
     }
 
@@ -91,6 +94,7 @@
     .role {
       margin: 0 0 1.75rem;
       color: var(--accent);
+      font-family: var(--mono);
       font-size: clamp(.68rem, 1vw, .82rem);
       letter-spacing: .04em;
     }
@@ -99,6 +103,7 @@
 
     h1 {
       margin-bottom: 2rem;
+      font-family: var(--mono);
       font-size: clamp(2.8rem, 7.4vw, 8rem);
       font-weight: 500;
       line-height: .9;
@@ -121,7 +126,7 @@
       border-left: 1px solid var(--line);
       background:
         radial-gradient(circle at 57% 48%, transparent 0 21%, #080808 21.5% 34%, transparent 34.5% 48%, #080808 48.5% 53%, transparent 53.5%),
-        radial-gradient(circle, rgb(255 42 174 / 92%) 0 1.15px, transparent 1.35px);
+        radial-gradient(circle, rgb(255 42 174 / 70%) 0 1.15px, transparent 1.35px);
       background-color: #0c0710;
       background-size: auto, 5px 5px;
     }
@@ -149,39 +154,93 @@
 
     .work-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr;
       border-bottom: 1px solid var(--line);
     }
 
-    .project, .music {
-      min-height: 285px;
-      padding: clamp(2rem, 5vw, 4.5rem);
+    .project {
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-copy {
+      padding: clamp(2.5rem, 5vw, 4.5rem);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
 
-    .project { border-right: 1px solid var(--line); }
+    .project-preview {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+      border-left: 1px solid var(--line);
+      background: #0b1018;
+      text-decoration: none;
+    }
+
+    .project-preview::after {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px transparent;
+      content: "";
+      pointer-events: none;
+      transition: box-shadow 160ms ease;
+    }
+
+    .project-preview:hover::after {
+      box-shadow: inset 0 0 0 1px rgb(255 42 174 / 65%);
+    }
+
+    .project-preview img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(.88) contrast(1.02);
+      transition: filter 160ms ease;
+    }
+
+    .project-preview:hover img { filter: saturate(1) contrast(1.04); }
+
+    .music {
+      min-height: 210px;
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      display: grid;
+      grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr) auto;
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 4rem);
+    }
 
     h2 {
       margin-bottom: 1.4rem;
+      font-family: var(--mono);
       font-size: clamp(1.8rem, 3vw, 3.2rem);
       font-weight: 500;
       line-height: 1;
       letter-spacing: -.055em;
     }
 
-    .project p, .music p {
+    .project-copy p, .music p {
       max-width: 48ch;
-      margin-bottom: 2rem;
       color: var(--muted);
       line-height: 1.65;
     }
 
+    .project-copy p { margin-bottom: 2rem; }
+
+    .music h2, .music p { margin-bottom: 0; }
+
     .primary-link {
       margin-top: auto;
+      font-family: var(--mono);
       font-size: .82rem;
     }
+
+    .music .primary-link { margin-top: 0; }
 
     .books {
       padding: clamp(3rem, 6vw, 6rem) clamp(1.25rem, 4vw, 4.5rem) clamp(3.5rem, 7vw, 7rem);
@@ -199,23 +258,31 @@
     .book { min-width: 0; }
 
     .book-cover {
+      position: relative;
       aspect-ratio: 2 / 3;
       margin-bottom: 1.25rem;
-      display: grid;
-      place-items: center;
       overflow: hidden;
+      border: 1px solid transparent;
       background: #0d0d0d;
+      transition: border-color 160ms ease;
     }
 
+    .book:hover .book-cover { border-color: var(--accent); }
+
     .book-cover img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      min-width: 0;
+      min-height: 0;
       display: block;
       object-fit: contain;
     }
 
     .book h3 {
       margin-bottom: .55rem;
+      font-family: var(--mono);
       font-size: clamp(.82rem, 1vw, .96rem);
       font-weight: 500;
       line-height: 1.45;
@@ -233,13 +300,22 @@
       padding: 0 clamp(1.25rem, 4vw, 4.5rem);
       display: flex;
       align-items: center;
+      font-family: var(--mono);
       font-size: clamp(.78rem, 1.3vw, .95rem);
     }
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
-      .introduction { min-height: 520px; }
+      .introduction { min-height: 410px; }
       .signal {
+        min-height: 280px;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .project { grid-template-columns: 1fr; }
+
+      .project-preview {
         min-height: 360px;
         border-top: 1px solid var(--line);
         border-left: 0;
@@ -262,17 +338,23 @@
         gap: .75rem;
       }
 
-      .introduction { min-height: 440px; }
+      .hero { min-height: auto; }
+      .introduction { min-height: 340px; }
       h1 { letter-spacing: -.085em; }
-      .signal { min-height: 280px; }
-      .work-grid { grid-template-columns: 1fr; }
+      .signal { min-height: 210px; }
 
-      .project {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
+      .project { min-height: auto; }
+      .project-copy { min-height: 250px; }
+      .project-preview { min-height: 220px; }
+
+      .music {
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .project, .music { min-height: 260px; }
+      .music .primary-link { margin-top: auto; }
       .books-grid { gap: 2rem 1rem; }
       .book-cover { margin-bottom: .9rem; }
     }
@@ -280,6 +362,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       a { transition: none; }
+      .book-cover, .project-preview::after, .project-preview img { transition: none; }
     }
   </style>
 </head>
@@ -305,9 +388,14 @@
 
       <div class="work-grid">
         <section class="project" aria-labelledby="project-title">
-          <h2 id="project-title">Reference Desk</h2>
-          <p>Aplicação local e privada para pesquisar PDFs e abrir a fonte exata.</p>
-          <a class="primary-link" href="https://github.com/FKENZOLS/reference-desk">Ver projeto <span aria-hidden="true">↗</span></a>
+          <div class="project-copy">
+            <h2 id="project-title">Reference Desk</h2>
+            <p>Aplicação local e privada para pesquisar PDFs e abrir a fonte exata.</p>
+            <a class="primary-link" href="https://github.com/FKENZOLS/reference-desk">Ver projeto <span aria-hidden="true">↗</span></a>
+          </div>
+          <a class="project-preview" href="https://github.com/FKENZOLS/reference-desk" aria-label="Ver Reference Desk no GitHub">
+            <img src="assets/reference-desk.png" width="1440" height="720" alt="Interface de pesquisa do Reference Desk">
+          </a>
         </section>
 
         <section class="music" aria-labelledby="music-title">
